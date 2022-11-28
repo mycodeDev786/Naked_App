@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import InnerLogo from '../../assets/innerLogo.png';
 import {Ionicons, MaterialIcons, AntDesign} from '@expo/vector-icons';
-import google from '../../assets/google.png';
-import facebook from '../../assets/fb.png';
+
+import {FontAwesome5} from '@expo/vector-icons';
 import {Button} from '../components/Button';
 function Login({navigation}) {
   const [securePassword, setSecurePassword] = useState(true);
@@ -28,13 +28,18 @@ function Login({navigation}) {
           paddingTop: 10,
         }}>
         <Image source={InnerLogo} style={{width: 96, height: 59}}></Image>
-        <Text style={{paddingTop: 100, fontSize: 22, fontWeight: 'bold'}}>
+        <Text
+          style={{
+            paddingTop: 100,
+            fontSize: 22,
+            fontWeight: 'bold',
+            color: '#000000',
+          }}>
           Login
         </Text>
       </View>
       <View style={styles.InputCon}>
         <View style={styles.InerView}>
-          <MaterialIcons name="alternate-email" size={24} color="black" />
           <TextInput
             onChangeText={text => setEmail(text)}
             style={styles.Input}
@@ -42,7 +47,6 @@ function Login({navigation}) {
           />
         </View>
         <View style={styles.InerView}>
-          <Ionicons name="lock-closed-outline" size={24} color="black" />
           <View style={styles.EyeStyel}>
             <TextInput
               onChangeText={text => setPassword(text)}
@@ -53,7 +57,7 @@ function Login({navigation}) {
             <TouchableOpacity onPress={onEyePressed}>
               <Ionicons
                 name={securePassword ? 'eye-off' : 'eye'}
-                color={securePassword ? 'black' : 'black'}
+                color={securePassword ? 'gray' : 'gray'}
                 size={20}
               />
             </TouchableOpacity>
@@ -80,72 +84,78 @@ function Login({navigation}) {
         }}>
         <View
           style={{
-            borderBottomWidth: 1,
+            borderBottomWidth: 0.9,
+            borderBottomColor: '#35485d',
             height: 1,
-            width: '33%',
+            width: '27%',
             marginRight: 20,
-            borderBottomColor: 'black',
-          }}>
-          <Text> ________</Text>
-        </View>
-        <View>
-          <Text>Or login with</Text>
-        </View>
-        <View
-          style={{
-            borderBottomWidth: 1,
-            height: 1,
-            width: '34%',
             marginLeft: 20,
             borderBottomColor: 'black',
           }}>
           <Text> ________</Text>
         </View>
+        <View>
+          <Text style={{fontSize: 14, color: 'gray'}}>Or login with</Text>
+        </View>
+        <View
+          style={{
+            borderBottomWidth: 0.9,
+            borderBottomColor: '#35485d',
+            height: 1,
+            width: '28%',
+            marginLeft: 20,
+            marginRight: 20,
+            borderBottomColor: 'black',
+          }}>
+          <Text> ________</Text>
+        </View>
       </View>
-
       <View
         style={{
-          width: '100%',
-          height: 100,
-          paddingTop: 10,
-          flexDirection: 'row',
-          justifyContent: 'space-evenly',
+          justifyContent: 'center',
           alignItems: 'center',
+          width: '100%',
         }}>
         <View
           style={{
+            width: '60%',
             height: 100,
-            justifyContent: 'center',
+            paddingTop: 10,
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
           }}>
-          <TouchableOpacity>
-            <Image
-              source={google}
-              style={{
-                width: 50,
-                height: 50,
-                backgroundColor: '#ffffff',
-                borderRadius: 25,
-              }}></Image>
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            height: 100,
-
-            justifyContent: 'center',
-          }}>
-          <TouchableOpacity>
-            <Image
-              source={facebook}
-              style={{
-                width: 50,
-                height: 50,
-                backgroundColor: '#ffffff',
-                borderRadius: 25,
-              }}></Image>
-          </TouchableOpacity>
+          <View
+            style={{
+              height: 100,
+              justifyContent: 'center',
+              width: 50,
+              height: 50,
+              backgroundColor: '#ffffff',
+              borderRadius: 25,
+              alignItems: 'center',
+            }}>
+            <TouchableOpacity>
+              <FontAwesome5 name="google" size={30} color="red" />
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              height: 100,
+              justifyContent: 'center',
+              width: 50,
+              height: 50,
+              backgroundColor: '#ffffff',
+              borderRadius: 25,
+              alignItems: 'center',
+            }}>
+            <TouchableOpacity>
+              <FontAwesome5 name="facebook-f" size={30} color="#4267B2" />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
+
       <View
         style={{
           width: '100%',
@@ -154,7 +164,9 @@ function Login({navigation}) {
           paddingTop: 20,
           flexDirection: 'row',
         }}>
-        <Text> Don't have an account?</Text>
+        <Text style={{fontWeight: 'bold', fontSize: 14, color: '#000000'}}>
+          Don't have an account?
+        </Text>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('Register');
@@ -185,6 +197,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 10,
+    borderRightColor: 8,
 
     backgroundColor: '#ffffff',
   },
@@ -199,8 +212,9 @@ const styles = StyleSheet.create({
   },
   ForgetPassText: {
     color: 'black',
-    fontSize: 16,
+    fontSize: 13,
     paddingBottom: 20,
+    fontWeight: 'bold',
   },
   EyeStyel: {
     flex: 1,

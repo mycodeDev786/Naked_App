@@ -11,13 +11,12 @@ import {
 } from 'react-native';
 import InnerLogo from '../../assets/innerLogo.png';
 import {Ionicons, MaterialIcons, AntDesign} from '@expo/vector-icons';
-import google from '../../assets/google.png';
-import facebook from '../../assets/fb.png';
+import {FontAwesome5} from '@expo/vector-icons';
 import {Button} from '../components/Button';
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 const elementWidth = screenWidth * 0.85;
-const elementHeight = screenWidth * 0.15;
+const elementHeight = screenWidth * 0.12;
 function SignUp() {
   const [securePassword, setSecurePassword] = useState(true);
   const [email, setEmail] = useState('');
@@ -35,7 +34,13 @@ function SignUp() {
             paddingTop: 10,
           }}>
           <Image source={InnerLogo} style={{width: 96, height: 59}}></Image>
-          <Text style={{paddingTop: 70, fontSize: 22, fontWeight: 'bold'}}>
+          <Text
+            style={{
+              paddingTop: 70,
+              fontSize: 22,
+              fontWeight: 'bold',
+              color: '#000000',
+            }}>
             SignUp
           </Text>
         </View>
@@ -72,7 +77,7 @@ function SignUp() {
               <TouchableOpacity onPress={onEyePressed}>
                 <Ionicons
                   name={securePassword ? 'eye-off' : 'eye'}
-                  color={securePassword ? 'black' : 'black'}
+                  color={securePassword ? 'gray' : 'gray'}
                   size={20}
                 />
               </TouchableOpacity>
@@ -89,7 +94,7 @@ function SignUp() {
               <TouchableOpacity onPress={onEyePressed}>
                 <Ionicons
                   name={securePassword ? 'eye-off' : 'eye'}
-                  color={securePassword ? 'black' : 'black'}
+                  color={securePassword ? 'gray' : 'gray'}
                   size={20}
                 />
               </TouchableOpacity>
@@ -120,83 +125,92 @@ function SignUp() {
           }}>
           <View
             style={{
-              borderBottomWidth: 1,
+              borderBottomWidth: 0.9,
+              borderBottomColor: '#35485d',
               height: 1,
-              width: '33%',
+              width: '27%',
               marginRight: 20,
-              borderBottomColor: 'black',
-            }}>
-            <Text> ________</Text>
-          </View>
-          <View>
-            <Text>Or login with</Text>
-          </View>
-          <View
-            style={{
-              borderBottomWidth: 1,
-              height: 1,
-              width: '34%',
               marginLeft: 20,
               borderBottomColor: 'black',
             }}>
             <Text> ________</Text>
           </View>
-        </View>
-
-        <View
-          style={{
-            width: '100%',
-            height: 100,
-            paddingTop: 10,
-            flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            alignItems: 'center',
-          }}>
-          <View
-            style={{
-              height: 100,
-              justifyContent: 'center',
-            }}>
-            <TouchableOpacity>
-              <Image
-                source={google}
-                style={{
-                  width: 50,
-                  height: 50,
-                  backgroundColor: '#ffffff',
-                  borderRadius: 25,
-                }}></Image>
-            </TouchableOpacity>
+          <View>
+            <Text style={{fontSize: 14, color: 'gray'}}>Or login with</Text>
           </View>
           <View
             style={{
-              height: 100,
-
-              justifyContent: 'center',
-            }}>
-            <TouchableOpacity>
-              <Image
-                source={facebook}
-                style={{
-                  width: 50,
-                  height: 50,
-                  backgroundColor: '#ffffff',
-                  borderRadius: 25,
-                }}></Image>
-            </TouchableOpacity>
-          </View>
+              borderBottomWidth: 0.9,
+              borderBottomColor: '#35485d',
+              height: 1,
+              width: '28%',
+              marginLeft: 20,
+              marginRight: 20,
+              borderBottomColor: 'black',
+            }}></View>
         </View>
         <View
           style={{
-            width: '100%',
-            height: 60,
             justifyContent: 'center',
-            paddingTop: 20,
-            flexDirection: 'row',
-            paddingBottom: 10,
+            alignItems: 'center',
+            width: '100%',
           }}>
-          <Text> Don't have an account?</Text>
-          <TouchableOpacity>
+          <View
+            style={{
+              width: '60%',
+              height: 100,
+              paddingTop: 10,
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+            }}>
+            <View
+              style={{
+                height: 100,
+                justifyContent: 'center',
+                width: 50,
+                height: 50,
+                backgroundColor: '#ffffff',
+                borderRadius: 25,
+                alignItems: 'center',
+              }}>
+              <TouchableOpacity>
+                <FontAwesome5 name="google" size={30} color="red" />
+              </TouchableOpacity>
+            </View>
+            <View
+              style={{
+                height: 100,
+                justifyContent: 'center',
+                width: 50,
+                height: 50,
+                backgroundColor: '#ffffff',
+                borderRadius: 25,
+                alignItems: 'center',
+              }}>
+              <TouchableOpacity>
+                <FontAwesome5 name="facebook-f" size={30} color="#4267B2" />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+
+        <View
+          style={{
+            width: '100%',
+            height: 40,
+            justifyContent: 'center',
+            paddingTop: 10,
+            paddingBottom: 10,
+            flexDirection: 'row',
+          }}>
+          <Text style={{fontWeight: 'bold', fontSize: 14}}>
+            Already have an account?
+          </Text>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Register');
+            }}>
             <Text style={{color: '#d4ad41', fontSize: 15, fontWeight: 'bold'}}>
               LOGIN
             </Text>
@@ -220,6 +234,7 @@ const styles = StyleSheet.create({
   },
   InerView: {
     margin: 5,
+    borderRadius: 10,
     width: elementWidth,
     height: elementHeight,
     alignItems: 'center',
